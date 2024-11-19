@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-//TODO: faire les commentaires
 
 public class GameManager : MonoBehaviour
 {
