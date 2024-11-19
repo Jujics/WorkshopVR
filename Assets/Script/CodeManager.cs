@@ -64,6 +64,7 @@ public class CodeManager : MonoBehaviour
                 }
                 break;
             default:
+                ResetCode();
                 break;
             
         }
