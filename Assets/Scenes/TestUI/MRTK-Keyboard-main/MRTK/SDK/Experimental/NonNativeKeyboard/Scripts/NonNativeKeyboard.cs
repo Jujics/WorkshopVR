@@ -86,11 +86,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         public TMP_InputField InputField = null;
 
         /// <summary>
-        /// Move the axis slider based on the camera forward and the keyboard plane projection.
-        /// </summary>
-        public AxisSlider InputFieldSlide = null;
-
-        /// <summary>
         /// Bool for toggling the slider being enabled.
         /// </summary>
         public bool SliderEnabled = true;
@@ -320,7 +315,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             {
                 Vector3 nearPoint = Vector3.ProjectOnPlane(Camera.main.transform.forward, transform.forward);
                 Vector3 relPos = transform.InverseTransformPoint(nearPoint);
-                InputFieldSlide.TargetPoint = relPos;
             }
 
             CheckForCloseOnInactivityTimeExpired();
