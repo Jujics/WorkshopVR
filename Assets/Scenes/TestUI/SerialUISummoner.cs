@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SerialUISummoner : MonoBehaviour
 {
-    [SerializeField] private float minDistance = 2;
-    [SerializeField] private bool showing = false;
+    public float minDistance = 2;
+    public bool EnterIn = false;
     
     protected Animator[] children;
 
@@ -14,7 +14,7 @@ public class SerialUISummoner : MonoBehaviour
         children = GetComponentsInChildren<Animator>();
         for (int a = 0; a < children.Length; a++)
         {
-            children[a].SetBool("Shown", showing);
+            children[a].SetBool("EnterIn", EnterIn);
         }
     }
 
@@ -23,20 +23,20 @@ public class SerialUISummoner : MonoBehaviour
         Vector3 delta = Camera.main.transform.position - transform.position;
         if (delta.magnitude < minDistance) 
         {
-            if (showing) return;
-            showing = true;
+            if (EnterIn) return;
+            EnterIn = true;
             for(int a = 0; a < children.Length; a++)
             {
-                children[a].SetBool("Shown", true);
+                children[a].SetBool("EnterIn", true);
             }
         }
         else
         {
-            if(!showing) return;
-            showing = false;
+            if(!EnterIn) return;
+            EnterIn = false;
             for(int a = 0; a < children.Length; a++)
             {
-                children[a].SetBool("Shown", false);
+                children[a].SetBool("EnterIn", false);
             }
         }
     }
