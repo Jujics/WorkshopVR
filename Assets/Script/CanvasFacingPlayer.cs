@@ -18,13 +18,8 @@ public class CanvasFacingPlayer : MonoBehaviour
 
     void Update()
     {
-        // Define my target position in front of the camera ->
         Vector3 targetPosition = target.TransformPoint(new Vector3(0, 0, CameraDistance));
-
-        // version 1: my object's rotation is always facing to camera with no dampening  ->
         transform.LookAt(transform.position + Camera2Follow.transform.rotation * Vector3.forward, Camera2Follow.transform.rotation * Vector3.up);
-
-        // version 2 : my object's rotation isn't finished synchronously with the position smooth.damp ->
         transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, 35 * Time.deltaTime);
     }
 }
