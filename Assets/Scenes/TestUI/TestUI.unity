@@ -4683,7 +4683,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputField: {fileID: 607764755}
-  InputFieldSlide: {fileID: 328789040}
   SliderEnabled: 1
   SubmitOnEnter: 1
   AlphaKeyboard: {fileID: 0}
@@ -4695,8 +4694,6 @@ MonoBehaviour:
   m_MinScale: 0.5
   m_MaxDistance: 3
   m_MinDistance: 1
-  CloseOnInactivity: 0
-  CloseOnInactivityTime: 15
 --- !u!114 &1069345216
 MonoBehaviour:
   m_ObjectHideFlags: 0

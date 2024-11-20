@@ -148,21 +148,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         private float m_MinDistance = 0.25f;
 
         /// <summary>
-        /// Make the keyboard disappear automatically after a timeout
-        /// </summary>
-        public bool CloseOnInactivity = true;
-
-        /// <summary>
-        /// Inactivity time that makes the keyboard disappear automatically.
-        /// </summary>
-        public float CloseOnInactivityTime = 15;
-
-        /// <summary>
-        /// Time on which the keyboard should close on inactivity
-        /// </summary>
-        private float _closingTime;
-
-        /// <summary>
         /// Event fired when shift key on keyboard is pressed.
         /// </summary>
         public event Action<bool> OnKeyboardShifted = delegate { };
@@ -316,8 +301,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
                 Vector3 nearPoint = Vector3.ProjectOnPlane(Camera.main.transform.forward, transform.forward);
                 Vector3 relPos = transform.InverseTransformPoint(nearPoint);
             }
-
-            CheckForCloseOnInactivityTimeExpired();
         }
 
         private void UpdateCaretPosition(int newPos) => InputField.caretPosition = newPos;
@@ -398,7 +381,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// </summary>
         public void PresentKeyboard()
         {
-            ResetClosingTime();
             gameObject.SetActive(true);
             ActivateSpecificKeyboard(LayoutType.Alpha);
 
@@ -599,7 +581,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// <param name="valueKey">The valueKey of the pressed key.</param>
         public void AppendValue(KeyboardValueKey valueKey)
         {
-            IndicateActivity();
             string value = "";
 
             OnKeyboardValueKeyPressed(valueKey);
@@ -633,7 +614,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// <param name="functionKey">The functionKey of the pressed key.</param>
         public void FunctionKey(KeyboardKeyFunc functionKey)
         {
-            IndicateActivity();
             OnKeyboardFunctionKeyPressed(functionKey);
             switch (functionKey.ButtonFunction)
             {
@@ -1029,43 +1009,5 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         }
 
         #endregion Keyboard Layout Modes
-
-        /// <summary>
-        /// Respond to keyboard activity: reset timeout timer, play sound
-        /// </summary>
-        private void IndicateActivity()
-        {
-            ResetClosingTime();
-            if (_audioSource == null)
-            {
-                _audioSource = GetComponent<AudioSource>();
-            }
-            if (_audioSource != null)
-            {
-                _audioSource.Play();
-            }
-        }
-
-        /// <summary>
-        /// Reset inactivity closing timer
-        /// </summary>
-        private void ResetClosingTime()
-        {
-            if (CloseOnInactivity)
-            {
-                _closingTime = Time.time + CloseOnInactivityTime;
-            }
-        }
-
-        /// <summary>
-        /// Check if the keyboard has been left alone for too long and close
-        /// </summary>
-        private void CheckForCloseOnInactivityTimeExpired()
-        {
-            if (Time.time > _closingTime && CloseOnInactivity)
-            {
-                Close();
-            }
-        }
     }
 }
