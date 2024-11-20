@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 2
-  showing: 0
+  EnterIn: 0
 --- !u!1 &94793782
 GameObject:
   m_ObjectHideFlags: 0
