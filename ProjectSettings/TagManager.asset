@@ -6,6 +6,9 @@ TagManager:
   tags:
   - End
   - ignore
+  - Screwdriver
+  - Analyser
+  - Pierre
   layers:
   - Default
   - TransparentFX
