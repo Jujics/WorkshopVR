@@ -7,6 +7,10 @@ public class LeverManager : MonoBehaviour
     public bool IsDown;
     public GameObject Lever;
     public GameObject GameManagerHolder;
+    public GameObject Activation;
+    public Material ActivatedMaterial;
+    public Light Blicklight;
+    private bool CorutineRunning = false;
     private bool HasPassed = false;
     GameManager gameManager;
 
@@ -16,9 +20,15 @@ public class LeverManager : MonoBehaviour
     }
     void Update()
     {
+        if (!IsDown)
+        {
+            Blicklight.enabled = false;
+        }
+        
         if (!IsDown && Lever.transform.rotation.eulerAngles.x < 40)
         {
             IsDown = true;
+            Activation.GetComponent<MeshRenderer> ().material = ActivatedMaterial;
         }
 
         if (IsDown && !HasPassed)
@@ -26,5 +36,32 @@ public class LeverManager : MonoBehaviour
             gameManager.gameState = GameState.InGame0;
             HasPassed = true;
         }
+
+        if (IsDown)
+        {
+            if (!CorutineRunning)
+            {
+                StartCoroutine(LightBlink());
+            }
+        }
     }
+
+    IEnumerator LightBlink()
+    {
+        CorutineRunning = true;
+    
+        while (true) 
+        {
+            Blicklight.enabled = true;
+            yield return new WaitForSeconds(1f); 
+
+            Blicklight.enabled = false;
+            yield return new WaitForSeconds(1f); 
+            
+            break;
+        }
+
+        CorutineRunning = false; 
+    }
+
 }
