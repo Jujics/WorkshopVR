@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorCheck : MonoBehaviour
 {
     public GameObject door;
-    public GameObject GameManagerHolder;
+    public GameObject CodeManagerHolder;
     public Transform StartPos;
     public Transform EndPos;
     public float speed = 1.0f;
@@ -14,19 +14,19 @@ public class DoorCheck : MonoBehaviour
     private float journeyLength;
     private float fractionOfJourney;
     
-    GameManager gameManager;
+    CodeManager codeManager;
     Collider doorCollider;
 
     void Start()
     {
         startTime = Time.time;
-        gameManager = GameManagerHolder.GetComponent<GameManager>();
+        codeManager = CodeManagerHolder.GetComponent<CodeManager>();
         doorCollider = GetComponent<Collider>();
         journeyLength = Vector3.Distance(StartPos.position, EndPos.position);
     }
     void Update()
     {
-        if (gameManager.gameState == GameState.InGameAll && fractionOfJourney <= 1.0f)
+        if (codeManager.HasEnteredCode4 == true && fractionOfJourney <= 1.0f)
         {
             if (!IsMoving)
             {
@@ -37,7 +37,6 @@ public class DoorCheck : MonoBehaviour
             float distCovered = (Time.time - startTime) * speed;
             fractionOfJourney = distCovered / journeyLength;
             transform.position = Vector3.Lerp(StartPos.position, EndPos.position, fractionOfJourney);
-            
         }
     }
 }

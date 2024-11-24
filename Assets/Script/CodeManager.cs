@@ -10,16 +10,15 @@ public class CodeManager : MonoBehaviour
     public int[] CodeHolder;
     public TextMeshProUGUI[] CodeText;
     public int currentLoc = 0;
-    public GameObject gameManagerHolder;
+    private bool HasEnteredCode1 = false;
+    private bool HasEnteredCode2 = false;
+    private bool HasEnteredCode3 = false;
+    public bool HasEnteredCode4 = false;
     private bool[] State = { false, false, false, false };
 
 
     GameManager gameManager;
-
-    public void Start()
-    {
-        gameManager = gameManagerHolder.GetComponent<GameManager>();
-    }
+    
 
     public void Update()
     {
@@ -39,36 +38,47 @@ public class CodeManager : MonoBehaviour
     {
         string Fcode = string.Join(',', CodeHolder);
         Debug.Log(Fcode);
-
-        switch (gameManager.gameState)
+        if (HasEnteredCode2 && HasEnteredCode1 && HasEnteredCode3)
         {
-            case GameState.InGame0:
-                if (Fcode == "1,0,0,0")
-                {
-                    ResetCode();
-                    gameManager.gameState = GameState.InGame1;
-                }
-                break;
-            case GameState.InGame1:
-                if (Fcode == "0,1,0,0")
-                {
-                    ResetCode();
-                    gameManager.gameState = GameState.InGame2;
-                }
-                break;
-            case GameState.InGame2:
-                if (Fcode == "0,0,1,0")
-                {
-                    ResetCode();
-                    gameManager.gameState = GameState.InGameAll;
-
-                }
-                break;
-            default:
+            if (Fcode == "0,0,0,0")
+            {
+                HasEnteredCode4 = true;
                 ResetCode();
-                break;
-            
+            }
         }
+        
+        if (HasEnteredCode2 && HasEnteredCode1)
+        {
+            if (Fcode == "0,0,0,0")
+            {
+                HasEnteredCode3 = true;
+                ResetCode();
+            }
+        }
+        
+        if (HasEnteredCode1)
+        {
+            if (Fcode == "0,0,0,0")
+            {
+                HasEnteredCode2 = true;
+                ResetCode();
+            }
+        }
+        
+        if (!HasEnteredCode1)
+        {
+            if (Fcode == "0,0,0,0")
+            {
+                HasEnteredCode1 = true;
+                ResetCode();
+            }
+        }
+
+        
+
+        
+
+        
     }
 
     public void ResetCode()
