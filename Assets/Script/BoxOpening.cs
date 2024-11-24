@@ -9,29 +9,40 @@ public class BoxOpening : MonoBehaviour
     public GameObject BoxDoor2;
     public bool BoxOpened = false;
     public GameObject Pierre;
-    private bool isScrewdriverInZone = false; 
+    private bool isMedaille1InZone = false; 
+    private bool isMedaille0InZone = false; 
     private bool isHandPressingTrigger = false; 
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Screwdriver"))
+        if (other.CompareTag("Medaille1"))
         {
-            isScrewdriverInZone = true;
-            StartCoroutine(WaitForTriggerPress());
+            isMedaille1InZone = true;
+        }
+        if (other.CompareTag("Medaille2"))
+        {
+            isMedaille0InZone = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Screwdriver"))
+        if (other.CompareTag("Medaille2"))
         {
-            isScrewdriverInZone = false;
-            StopAllCoroutines();
+            isMedaille0InZone = false;
+        }
+        if (other.CompareTag("Medaille1"))
+        {
+            isMedaille1InZone = false;
         }
     }
 
     private void Update()
     {
+        if (isMedaille1InZone && isMedaille0InZone)
+        {
+            StartCoroutine(WaitForTriggerPress());
+        }
         if (BoxOpened)
         {
             StartCoroutine(OpenBox());
@@ -41,7 +52,7 @@ public class BoxOpening : MonoBehaviour
 
     private IEnumerator WaitForTriggerPress()
     {
-        while (isScrewdriverInZone)
+        while (isMedaille1InZone && isMedaille0InZone)
         {
             float triggerValue = TriggerInputAction.action.ReadValue<float>();
 
