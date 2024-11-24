@@ -9,6 +9,9 @@ TagManager:
   - Screwdriver
   - Analyser
   - Pierre
+  - Medaille1
+  - Medaille2
+  - Medaille0
   layers:
   - Default
   - TransparentFX

@@ -29,10 +29,10 @@ public class BreakableObject : MonoBehaviour
     {
         
         GameObject Exemple = Instantiate(brokenObjectPrefab, transform.position, transform.rotation);
-        Exemple.gameObject.tag = "Medaille2";
+        Exemple.gameObject.tag = "Medaille1";
         
         foreach(Transform child in Exemple.transform) {
-            child.tag = "Medaille2";
+            child.tag = "Medaille1";
         }
         
         Rigidbody[] brokenPieces = brokenObjectPrefab.GetComponentsInChildren<Rigidbody>();

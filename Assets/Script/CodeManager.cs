@@ -11,6 +11,7 @@ public class CodeManager : MonoBehaviour
     public TextMeshProUGUI[] CodeText;
     public int currentLoc = 0;
     public GameObject gameManagerHolder;
+    private bool[] State = { false, false, false, false };
 
 
     GameManager gameManager;

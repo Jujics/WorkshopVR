@@ -8,62 +8,151 @@ public class BoxOpening : MonoBehaviour
     public GameObject BoxDoor;
     public GameObject BoxDoor2;
     public bool BoxOpened = false;
-    public GameObject Pierre;
-    private bool isMedaille1InZone = false; 
-    private bool isMedaille0InZone = false; 
+    public bool Has1Key;
+    public bool Has2Key;
+    public bool Has3Key;
+    public GameObject[] GameObjectsSpawned;
+    public string[] TagList;
+    public bool isObject1InZone = false; 
+    public bool isObject0InZone = false; 
+    public bool isObject2InZone = false; 
     private bool isHandPressingTrigger = false; 
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Medaille1"))
+        if (other.CompareTag(TagList[0]))
         {
-            isMedaille1InZone = true;
+            isObject0InZone = true;
         }
-        if (other.CompareTag("Medaille2"))
+
+        if (Has2Key || Has3Key)
         {
-            isMedaille0InZone = true;
+            if (other.CompareTag(TagList[1]))
+            {
+                isObject1InZone = true;
+            }
+        }
+
+        if (Has3Key)
+        {
+            if (other.CompareTag(TagList[2]))
+            {
+                isObject2InZone = true;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Medaille2"))
+        if (other.CompareTag(TagList[0]))
         {
-            isMedaille0InZone = false;
+            isObject0InZone = false;
         }
-        if (other.CompareTag("Medaille1"))
+
+        if (Has2Key || Has3Key)
         {
-            isMedaille1InZone = false;
+            if (other.CompareTag(TagList[1]))
+            {
+                isObject1InZone = false;
+            }
+        }
+
+        if (Has3Key)
+        {
+            if (other.CompareTag(TagList[2]))
+            {
+                isObject2InZone = false;
+            }
         }
     }
 
     private void Update()
     {
-        if (isMedaille1InZone && isMedaille0InZone)
+        if (Has1Key)
         {
-            StartCoroutine(WaitForTriggerPress());
+            if (isObject0InZone)
+            {
+                StartCoroutine(WaitForTriggerPress());
+            }
         }
+
+        if (Has2Key)
+        {
+            if (isObject1InZone && isObject0InZone)
+            {
+                StartCoroutine(WaitForTriggerPress());
+            }
+        }
+
+        if (Has3Key)
+        {
+            if (isObject1InZone && isObject0InZone && isObject2InZone)
+            {
+                StartCoroutine(WaitForTriggerPress());
+            }
+        }
+        
         if (BoxOpened)
         {
             StartCoroutine(OpenBox());
-            Pierre.SetActive(true);
+            foreach (GameObject go in GameObjectsSpawned)
+            {
+                go.SetActive(false);
+            }
         }
     }
 
     private IEnumerator WaitForTriggerPress()
     {
-        while (isMedaille1InZone && isMedaille0InZone)
+        if (Has1Key)
         {
-            float triggerValue = TriggerInputAction.action.ReadValue<float>();
-
-            if (triggerValue >= 0.9f) 
+            while (isObject0InZone)
             {
-                isHandPressingTrigger = true;
-                BoxOpened = true;
-                break; 
-            }
+                float triggerValue = TriggerInputAction.action.ReadValue<float>();
 
-            yield return null;
+                if (triggerValue >= 0.9f) 
+                {
+                    isHandPressingTrigger = true;
+                    BoxOpened = true;
+                    break; 
+                }
+
+                yield return null;
+            }
+        }
+
+        if (Has2Key)
+        {
+            while (isObject1InZone && isObject0InZone)
+            {
+                float triggerValue = TriggerInputAction.action.ReadValue<float>();
+
+                if (triggerValue >= 0.9f) 
+                {
+                    isHandPressingTrigger = true;
+                    BoxOpened = true;
+                    break; 
+                }
+
+                yield return null;
+            }
+        }
+
+        if (Has3Key)
+        {
+            while (isObject1InZone && isObject0InZone && isObject2InZone)
+            {
+                float triggerValue = TriggerInputAction.action.ReadValue<float>();
+
+                if (triggerValue >= 0.9f) 
+                {
+                    isHandPressingTrigger = true;
+                    BoxOpened = true;
+                    break; 
+                }
+
+                yield return null;
+            }
         }
 
         isHandPressingTrigger = false;
@@ -91,4 +180,6 @@ public class BoxOpening : MonoBehaviour
             yield return null; 
         }
     }
+
+    
 }
