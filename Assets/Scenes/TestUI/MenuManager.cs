@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +12,6 @@ public class MenuManager : MonoBehaviour
     public static void MenuQuit()
     {
         Application.Quit();
-        EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
