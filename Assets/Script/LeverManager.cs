@@ -22,7 +22,10 @@ public class LeverManager : MonoBehaviour
     {
         if (!IsDown)
         {
-            Blicklight.enabled = false;
+            if (!CorutineRunning)
+            {
+                StartCoroutine(LightBlink());
+            }
         }
         
         if (!IsDown && Lever.transform.rotation.eulerAngles.x < 40)
@@ -39,10 +42,7 @@ public class LeverManager : MonoBehaviour
 
         if (IsDown)
         {
-            if (!CorutineRunning)
-            {
-                StartCoroutine(LightBlink());
-            }
+           Blicklight.enabled = true;
         }
     }
 
@@ -63,5 +63,7 @@ public class LeverManager : MonoBehaviour
 
         CorutineRunning = false; 
     }
+    
+    
 
 }

@@ -12,10 +12,7 @@ public class CodeManager : MonoBehaviour
     public int currentLoc = 0;
     private bool HasEnteredCode1 = false;
     private bool HasEnteredCode2 = false;
-    private bool HasEnteredCode3 = false;
-    public bool HasEnteredCode4 = false;
-    private bool[] State = { false, false, false, false };
-
+    public bool HasEnteredCode3 = false;
 
     GameManager gameManager;
     
@@ -38,19 +35,12 @@ public class CodeManager : MonoBehaviour
     {
         string Fcode = string.Join(',', CodeHolder);
         Debug.Log(Fcode);
-        if (HasEnteredCode2 && HasEnteredCode1 && HasEnteredCode3)
-        {
-            if (Fcode == "0,0,0,0")
-            {
-                HasEnteredCode4 = true;
-                ResetCode();
-            }
-        }
         
         if (HasEnteredCode2 && HasEnteredCode1)
         {
             if (Fcode == "0,0,0,0")
             {
+                //setactive(canvas) = False
                 HasEnteredCode3 = true;
                 ResetCode();
             }
@@ -60,6 +50,8 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
+                //Setactive(image1) = false
+                //Setactive(image2) = true
                 HasEnteredCode2 = true;
                 ResetCode();
             }
@@ -69,6 +61,8 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
+                //Setactive(image0) = false
+                //Setactive(image1) = true
                 HasEnteredCode1 = true;
                 ResetCode();
             }
