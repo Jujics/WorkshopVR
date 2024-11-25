@@ -97,7 +97,7 @@ public class BoxOpening : MonoBehaviour
             StartCoroutine(OpenBox());
             foreach (GameObject go in GameObjectsSpawned)
             {
-                go.SetActive(false);
+                go.SetActive(true);
             }
         }
     }

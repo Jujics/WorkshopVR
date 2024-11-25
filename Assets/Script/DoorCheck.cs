@@ -26,7 +26,7 @@ public class DoorCheck : MonoBehaviour
     }
     void Update()
     {
-        if (codeManager.HasEnteredCode4 == true && fractionOfJourney <= 1.0f)
+        if (codeManager.HasEnteredCode3 == true && fractionOfJourney <= 1.0f)
         {
             if (!IsMoving)
             {
