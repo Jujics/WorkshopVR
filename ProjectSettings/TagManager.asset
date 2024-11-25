@@ -12,6 +12,8 @@ TagManager:
   - Medaille1
   - Medaille2
   - Medaille0
+  - Planet
+  - PlanetHalf
   layers:
   - Default
   - TransparentFX
