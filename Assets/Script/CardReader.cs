@@ -5,21 +5,35 @@ using UnityEngine;
 
 public class CardReader : MonoBehaviour
 {
-    private bool[] cardsSwiped = {false,false,false};
-    private Transform[] CardsSlot;
+    public Transform[] CardsSlot;
+    public GameObject[] CardInserted;
+    private bool[] cardsSwiped;
     private int i = 0;
+
+    private void Start()
+    {
+        cardsSwiped = new bool[CardsSlot.Length];
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Card")
+        if (other.CompareTag("Carte") && i < CardsSlot.Length)
         {
             cardsSwiped[i] = true;
-            other.gameObject.transform.position = CardsSlot[i].position;
+            CardInserted[i].SetActive(true);
+            Destroy(other.gameObject);
             i++;
+            CheckIfAllCardsSwiped();
         }
     }
 
     private void CheckIfAllCardsSwiped()
     {
-        
+        bool allSwiped = Array.TrueForAll(cardsSwiped, swiped => swiped);
+
+        if (allSwiped)
+        {
+            Debug.Log("All cards swiped!");
+        }
     }
 }
