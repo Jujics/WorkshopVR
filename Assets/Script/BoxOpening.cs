@@ -99,6 +99,7 @@ public class BoxOpening : MonoBehaviour
             {
                 go.SetActive(true);
             }
+            BoxOpened = false;
         }
     }
 
