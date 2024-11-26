@@ -4997,8 +4997,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252d996925276c6479478d590c02e5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CodeHolder: 00000000
+  CodeHolder: 00000000000000000000000000000000
   CodeText:
+  - {fileID: 1238934079}
+  - {fileID: 1238934079}
+  - {fileID: 1238934079}
   - {fileID: 1238934079}
   currentLoc: 0
   HasEnteredCode3: 0
