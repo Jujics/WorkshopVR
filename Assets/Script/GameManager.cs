@@ -25,12 +25,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
 
     public bool HasCard { get; set; }
-
-    private void Update()
-    {
-        
-
-    }
+    
 
     private void Awake()
     {
@@ -64,16 +59,6 @@ public class GameManager : MonoBehaviour
                 HandleInGame0();
                 break;
             }
-            case GameState.InGame1:
-            {
-                HandleInGame1();
-                break;
-            }
-            case GameState.InGame2:
-            {
-                HandleInGame2();
-                break;
-            }
             case GameState.InGameAll:
             {
                 HandleInGameAll();
@@ -102,17 +87,6 @@ public class GameManager : MonoBehaviour
     {
         throw new NotImplementedException();
     }
-
-    private void HandleInGame2()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void HandleInGame1()
-    {
-        throw new NotImplementedException();
-    }
-
     private void HandleInGame0()
     {
         throw new NotImplementedException();
@@ -143,8 +117,6 @@ public enum GameState
 {
     GameStart,
     InGame0,
-    InGame1,
-    InGame2,
     InGameAll,
     Win,
     Pause
