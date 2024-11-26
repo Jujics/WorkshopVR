@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
         LumiereH.SetActive(false);
         LumiereB.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
     }
 
     public IEnumerator ButtonQuit()
@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour
         LumiereH.SetActive(false);
         LumiereB.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 }
