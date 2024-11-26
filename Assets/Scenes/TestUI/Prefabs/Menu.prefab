@@ -2373,6 +2373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480319159856251909}
   - component: {fileID: 6327978035638580792}
+  - component: {fileID: 242686784580117158}
   m_Layer: 0
   m_Name: Menu Manager
   m_TagString: Untagged
@@ -2411,6 +2412,19 @@ MonoBehaviour:
   CanvasPlay: {fileID: 3609257615468801159}
   LumiereH: {fileID: 2828502625055468391}
   LumiereB: {fileID: 7438349826534320991}
+--- !u!114 &242686784580117158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646557261593483999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c26e6cb5e32c44aafbfb0e233b63f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CliqueBouton: {fileID: 0}
 --- !u!1 &7656108847942047574
 GameObject:
   m_ObjectHideFlags: 0
