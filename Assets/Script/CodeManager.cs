@@ -10,10 +10,12 @@ public class CodeManager : MonoBehaviour
     public int[] CodeHolder;
     public TextMeshProUGUI[] CodeText;
     public int currentLoc = 0;
+    public bool HasEnteredCode3 = false;
+    public BoxOpening Box;
     private bool HasEnteredCode1 = false;
     private bool HasEnteredCode2 = false;
-    public bool HasEnteredCode3 = false;
-
+    
+    
     GameManager gameManager;
     
 
@@ -40,6 +42,7 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
+                Box.BoxOpened = true;
                 //setactive(canvas) = False
                 HasEnteredCode3 = true;
                 ResetCode();
