@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject CanvasPlay;
     [SerializeField] private GameObject LumiereH;
     [SerializeField] private GameObject LumiereB;
+    [SerializeField] private string sceneName;
 
     public void Start()
     {
@@ -39,7 +40,7 @@ public class MenuManager : MonoBehaviour
         LumiereH.SetActive(false);
         LumiereB.SetActive(false);
         yield return new WaitForSeconds(0.5f);
-        //SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(sceneName);
     }
 
     public IEnumerator ButtonQuit()
