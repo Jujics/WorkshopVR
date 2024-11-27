@@ -12,7 +12,7 @@ namespace LevelUP.Dial
         [SerializeField] private GameObject LefthandModel;
         [SerializeField] bool shouldUseDummyHands;
         
-        public AudioSource RotatorAudio;
+
         private XRBaseInteractor interactor;
         private float startAngle;
         private bool requiresStartAngle = true;
@@ -65,7 +65,6 @@ namespace LevelUP.Dial
             {
                 var rotationAngle = GetInteractorRotation(); //gets the current controller angle
                 GetRotationDistance(rotationAngle);
-                RotatorAudio.Play();
             }
         }
 
@@ -89,7 +88,7 @@ namespace LevelUP.Dial
                             angleCheck = CheckAngle(currentAngle, startAngle);
 
                             if (angleCheck < angleTolerance)
-                                return;
+                            return;
                             else
                             {
                                 RotateDialClockwise();
