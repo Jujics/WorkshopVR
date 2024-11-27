@@ -31,7 +31,7 @@ public class LeverManager : MonoBehaviour
         if (!IsDown && Lever.transform.rotation.eulerAngles.x < 40)
         {
             IsDown = true;
-            //son activé
+            //son active
             //son bruit ambiant
             Activation.GetComponent<MeshRenderer> ().material = ActivatedMaterial;
         }
