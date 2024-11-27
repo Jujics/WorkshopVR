@@ -17,6 +17,7 @@ public class BoxOpening : MonoBehaviour
     public bool isObject0InZone = false; 
     public bool isObject2InZone = false;
     public float target;
+    public AudioSource OpenAudio;
     private bool isHandPressingTrigger = false; 
     
     private void OnTriggerEnter(Collider other)
@@ -99,6 +100,7 @@ public class BoxOpening : MonoBehaviour
             foreach (GameObject go in GameObjectsSpawned)
             {
                 go.SetActive(true);
+                OpenAudio.Play();
             }
             BoxOpened = false;
         }
