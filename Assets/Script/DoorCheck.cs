@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class DoorCheck : MonoBehaviour
 {
     public GameObject door;
-    public GameObject CodeManagerHolder;
+    public GameObject CardReader;
     public Transform StartPos;
     public Transform EndPos;
     public float speed = 1.0f;
@@ -14,19 +15,20 @@ public class DoorCheck : MonoBehaviour
     private float journeyLength;
     private float fractionOfJourney;
     
-    CodeManager codeManager;
+    CardReader cardReader;
     Collider doorCollider;
 
     void Start()
     {
         startTime = Time.time;
-        codeManager = CodeManagerHolder.GetComponent<CodeManager>();
+        cardReader = CardReader.GetComponent<CardReader>();
         doorCollider = GetComponent<Collider>();
         journeyLength = Vector3.Distance(StartPos.position, EndPos.position);
     }
     void Update()
     {
-        if (codeManager.HasEnteredCode3 == true && fractionOfJourney <= 1.0f)
+        bool allSwiped = Array.TrueForAll(cardReader.cardsSwiped, swiped => swiped);
+        if (allSwiped && fractionOfJourney <= 1.0f)
         {
             if (!IsMoving)
             {

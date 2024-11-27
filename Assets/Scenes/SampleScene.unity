@@ -15174,8 +15174,8 @@ Transform:
   m_GameObject: {fileID: 1407459161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8807, y: -0.5284, z: -1.0184}
-  m_LocalScale: {x: 2.9215949, y: 1, z: 2.8759778}
+  m_LocalPosition: {x: 17.6012, y: -0.5284, z: -1.0184}
+  m_LocalScale: {x: 6.0658154, y: 1, z: 2.8759778}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 188467853}
@@ -16386,6 +16386,7 @@ MonoBehaviour:
   - {fileID: 74150993}
   - {fileID: 863605149}
   - {fileID: 933389600}
+  cardsSwiped: 
 --- !u!1 &1562400988
 GameObject:
   m_ObjectHideFlags: 0
@@ -16554,6 +16555,7 @@ MonoBehaviour:
   - {fileID: 74150993}
   - {fileID: 863605149}
   - {fileID: 933389600}
+  cardsSwiped: 
 --- !u!65 &1585362738
 BoxCollider:
   m_ObjectHideFlags: 0

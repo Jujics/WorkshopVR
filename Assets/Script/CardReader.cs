@@ -7,7 +7,7 @@ public class CardReader : MonoBehaviour
 {
     public Transform[] CardsSlot;
     public GameObject[] CardInserted;
-    private bool[] cardsSwiped;
+    public bool[] cardsSwiped;
     private int i = 0;
 
     private void Start()
