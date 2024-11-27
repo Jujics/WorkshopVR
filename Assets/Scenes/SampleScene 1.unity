@@ -3607,6 +3607,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!1 &307090383
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,6 +3986,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!4 &318934751
 Transform:
   m_ObjectHideFlags: 0
@@ -14277,6 +14279,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!1 &1260887091
 GameObject:
   m_ObjectHideFlags: 0
@@ -16419,6 +16422,10 @@ PrefabInstance:
     - target: {fileID: 962208382678304970, guid: 2f60a5b4aa919104697ca7d07340cf14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 962208382678304970, guid: 2f60a5b4aa919104697ca7d07340cf14, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19224,6 +19231,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -140
+  OpenAudio: {fileID: 0}
 --- !u!1 &1997150681
 GameObject:
   m_ObjectHideFlags: 0
@@ -19337,6 +19345,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!1 &2003316869
 GameObject:
   m_ObjectHideFlags: 0
