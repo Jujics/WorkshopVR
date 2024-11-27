@@ -16,7 +16,6 @@ public class DialManager : MonoBehaviour
         if (dials[0].text == dialTexts[0] && dials[1].text == dialTexts[1] && dials[2].text == dialTexts[2] &&
             dials[3].text == dialTexts[3])
         {
-            //
             BoxOpening.BoxOpened = true;
         }
     }

@@ -7,13 +7,14 @@ namespace LevelUP.Dial
     {
         [SerializeField] TextMeshProUGUI textBox;
         public GameObject DialManagerHolder;
+        public AudioSource DialAudio;
         DialManager manager => DialManagerHolder.GetComponent<DialManager>();
 
         public void DialChanged(float dialValue)
         {
             Debug.Log("Dial changed: " + dialValue);
             dialValue = normalize(dialValue);
-            //sound
+            DialAudio.Play();
             switch (dialValue)
             {
                 case (0):

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LeverManager : MonoBehaviour
 {
+    public AudioSource ActivateSound;
+    public AudioSource BruitSound;
     public bool IsDown;
     public GameObject Lever;
     public GameObject GameManagerHolder;
@@ -31,9 +33,9 @@ public class LeverManager : MonoBehaviour
         if (!IsDown && Lever.transform.rotation.eulerAngles.x < 40)
         {
             IsDown = true;
-            //son active
-            //son bruit ambiant
             Activation.GetComponent<MeshRenderer> ().material = ActivatedMaterial;
+            ActivateSound.Play ();
+            BruitSound.Play ();
         }
 
         if (IsDown && !HasPassed)

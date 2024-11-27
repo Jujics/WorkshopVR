@@ -9,6 +9,7 @@ public class CardReader : MonoBehaviour
     public GameObject[] CardInserted;
     public GameObject[] PlanetList;
     public bool[] cardsSwiped;
+    public AudioSource InteractClefUSB;
     private int i = 0;
 
     private void Start()
@@ -24,8 +25,8 @@ public class CardReader : MonoBehaviour
             cardsSwiped[i] = true;
             CardInserted[i].SetActive(true);
             PlanetList[i].SetActive(true);
-            //son
             i++;
+            InteractClefUSB.Play();
             CheckIfAllCardsSwiped();
         }
     }

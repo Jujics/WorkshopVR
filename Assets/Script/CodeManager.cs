@@ -12,6 +12,9 @@ public class CodeManager : MonoBehaviour
     public int currentLoc = 0;
     public bool HasEnteredCode3 = false;
     public BoxOpening Box;
+    public AudioSource InteractDigiAudio;
+    public AudioSource CodeFauxAudio;
+    public AudioSource CodeBonAudio;
     private bool HasEnteredCode1 = false;
     private bool HasEnteredCode2 = false;
     
@@ -29,14 +32,14 @@ public class CodeManager : MonoBehaviour
 
     public void OnButtonClic(int code)
     {
-        //interaction Digicode
         CodeHolder[currentLoc] = code;
         currentLoc++;
+        InteractDigiAudio.Play();
     }
 
     public void OnValidateButton()
     {
-        //interaction Digicode
+        InteractDigiAudio.Play();
         string Fcode = string.Join(',', CodeHolder);
         Debug.Log(Fcode);
         
@@ -44,10 +47,10 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
-                //son code bon
                 Box.BoxOpened = true;
                 //setactive(canvas) = False
                 HasEnteredCode3 = true;
+                CodeBonAudio.Play();
                 ResetCode();
             }
         }
@@ -56,10 +59,10 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
-                //son code bon
                 //Setactive(image1) = false
                 //Setactive(image2) = true
                 HasEnteredCode2 = true;
+                CodeBonAudio.Play();
                 ResetCode();
             }
         }
@@ -68,16 +71,16 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
-                //son code bon
                 //Setactive(image0) = false
                 //Setactive(image1) = true
                 HasEnteredCode1 = true;
+                CodeBonAudio.Play();
                 ResetCode();
             }
         }
         else
         {
-            //code faux 
+            CodeFauxAudio.Play(); 
             ResetCode();
         }
     }
