@@ -3810,7 +3810,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
-  OpenAudio: {fileID: 0}
+  OpenAudio: {fileID: 971568433}
 --- !u!1 &307090383
 GameObject:
   m_ObjectHideFlags: 0
@@ -4189,7 +4189,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
-  OpenAudio: {fileID: 0}
+  OpenAudio: {fileID: 971568433}
 --- !u!4 &318934751
 Transform:
   m_ObjectHideFlags: 0
@@ -20001,7 +20001,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
-  OpenAudio: {fileID: 0}
+  OpenAudio: {fileID: 971568433}
 --- !u!1 &2003316869
 GameObject:
   m_ObjectHideFlags: 0
