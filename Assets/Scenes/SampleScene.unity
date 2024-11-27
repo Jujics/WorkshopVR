@@ -21848,6 +21848,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5140484513108827817, guid: 410f0baf282e5e54f9516a37468aa1c2, type: 3}
+      propertyPath: CardReader
+      value: 
+      objectReference: {fileID: 1585362735}
+    - target: {fileID: 5140484513108827817, guid: 410f0baf282e5e54f9516a37468aa1c2, type: 3}
       propertyPath: CodeManagerHolder
       value: 
       objectReference: {fileID: 1342004749}

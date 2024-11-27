@@ -20,10 +20,10 @@ public class CardReader : MonoBehaviour
     {
         if (other.CompareTag("Carte") && i < CardsSlot.Length)
         {
+            Destroy(other.gameObject);
             cardsSwiped[i] = true;
             CardInserted[i].SetActive(true);
             PlanetList[i].SetActive(true);
-            Destroy(other.gameObject);
             //son
             i++;
             CheckIfAllCardsSwiped();
