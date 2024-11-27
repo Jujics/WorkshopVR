@@ -15,7 +15,8 @@ public class BoxOpening : MonoBehaviour
     public string[] TagList;
     public bool isObject1InZone = false; 
     public bool isObject0InZone = false; 
-    public bool isObject2InZone = false; 
+    public bool isObject2InZone = false;
+    public float target;
     private bool isHandPressingTrigger = false; 
     
     private void OnTriggerEnter(Collider other)
@@ -161,11 +162,13 @@ public class BoxOpening : MonoBehaviour
 
     private IEnumerator OpenBox()
     {
-        float targetAngle = -20f; 
+        float targetAngle = target; 
         float speed = 50f;
 
         while (BoxDoor.transform.localEulerAngles.x > targetAngle || BoxDoor2.transform.localEulerAngles.x > targetAngle)
         {
+            float currentAngley = BoxDoor.transform.localEulerAngles.y;
+            float currentAnglez = BoxDoor2.transform.localEulerAngles.z;
             float currentAngleBoxDoor = BoxDoor.transform.localEulerAngles.x;
             float currentAngleBoxDoor2 = BoxDoor2.transform.localEulerAngles.x;
 
@@ -175,8 +178,8 @@ public class BoxOpening : MonoBehaviour
             float newAngleBoxDoor = Mathf.MoveTowards(currentAngleBoxDoor, targetAngle, speed * Time.deltaTime);
             float newAngleBoxDoor2 = Mathf.MoveTowards(currentAngleBoxDoor2, targetAngle, speed * Time.deltaTime);
 
-            BoxDoor.transform.localEulerAngles = new Vector3(newAngleBoxDoor, -90, -90);
-            BoxDoor2.transform.localEulerAngles = new Vector3(newAngleBoxDoor2, 90, 270);
+            BoxDoor.transform.localEulerAngles = new Vector3(newAngleBoxDoor, currentAngley, currentAnglez);
+            BoxDoor2.transform.localEulerAngles = new Vector3(newAngleBoxDoor2, currentAngley, currentAnglez);
 
             yield return null; 
         }
