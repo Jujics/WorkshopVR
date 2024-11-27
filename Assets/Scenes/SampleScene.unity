@@ -3603,6 +3603,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!1 &307090383
 GameObject:
   m_ObjectHideFlags: 0
@@ -3981,6 +3982,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!4 &318934751
 Transform:
   m_ObjectHideFlags: 0
@@ -10085,6 +10087,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba1d6c131f3638244a73fca9222f9149, type: 3}
   m_PrefabInstance: {fileID: 1318318252}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &805456536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 805456537}
+  m_Layer: 0
+  m_Name: Sound_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &805456537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805456536}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4936342, y: 4.0850897, z: -3.6424649}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817720160
 GameObject:
   m_ObjectHideFlags: 0
@@ -12168,6 +12201,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096251194}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1108345782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108345783}
+  m_Layer: 0
+  m_Name: -------------------------------------------  (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108345783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108345782}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4936342, y: 4.0850897, z: -3.6424649}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109952789
 GameObject:
   m_ObjectHideFlags: 0
@@ -14301,6 +14365,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!1 &1260887091
 GameObject:
   m_ObjectHideFlags: 0
@@ -14923,6 +14988,9 @@ MonoBehaviour:
   currentLoc: 0
   HasEnteredCode3: 0
   Box: {fileID: 318934750}
+  InteractDigiAudio: {fileID: 0}
+  CodeFauxAudio: {fileID: 0}
+  CodeBonAudio: {fileID: 0}
 --- !u!4 &1342221174 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba1d6c131f3638244a73fca9222f9149, type: 3}
@@ -16420,6 +16488,7 @@ MonoBehaviour:
   - {fileID: 933389600}
   PlanetList: []
   cardsSwiped: 
+  InteractClefUSB: {fileID: 0}
 --- !u!1 &1562400988
 GameObject:
   m_ObjectHideFlags: 0
@@ -16593,6 +16662,7 @@ MonoBehaviour:
   - {fileID: 1335951068}
   - {fileID: 1077596270}
   cardsSwiped: 
+  InteractClefUSB: {fileID: 0}
 --- !u!65 &1585362738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19225,6 +19295,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -140
+  OpenAudio: {fileID: 0}
 --- !u!1 &1999008248
 GameObject:
   m_ObjectHideFlags: 0
@@ -19306,6 +19377,7 @@ MonoBehaviour:
   isObject0InZone: 0
   isObject2InZone: 0
   target: -20
+  OpenAudio: {fileID: 0}
 --- !u!1 &2003316869
 GameObject:
   m_ObjectHideFlags: 0
@@ -20788,6 +20860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1614e30f049b144bd7290d3b9e09a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivateSound: {fileID: 0}
+  BruitSound: {fileID: 0}
   IsDown: 0
   Lever: {fileID: 2099373508}
   GameManagerHolder: {fileID: 261103471}
@@ -23669,4 +23743,6 @@ SceneRoots:
   - {fileID: 1007158713}
   - {fileID: 1767258774}
   - {fileID: 220131834}
+  - {fileID: 805456537}
+  - {fileID: 1108345783}
   - {fileID: 718870968}
