@@ -29,12 +29,14 @@ public class CodeManager : MonoBehaviour
 
     public void OnButtonClic(int code)
     {
+        //interaction Digicode
         CodeHolder[currentLoc] = code;
         currentLoc++;
     }
 
     public void OnValidateButton()
     {
+        //interaction Digicode
         string Fcode = string.Join(',', CodeHolder);
         Debug.Log(Fcode);
         
@@ -42,6 +44,7 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
+                //son code bon
                 Box.BoxOpened = true;
                 //setactive(canvas) = False
                 HasEnteredCode3 = true;
@@ -53,6 +56,7 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
+                //son code bon
                 //Setactive(image1) = false
                 //Setactive(image2) = true
                 HasEnteredCode2 = true;
@@ -64,18 +68,18 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
+                //son code bon
                 //Setactive(image0) = false
                 //Setactive(image1) = true
                 HasEnteredCode1 = true;
                 ResetCode();
             }
         }
-
-        
-
-        
-
-        
+        else
+        {
+            //code faux 
+            ResetCode();
+        }
     }
 
     public void ResetCode()

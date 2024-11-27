@@ -41,6 +41,7 @@ public class BreakableObject : MonoBehaviour
             if (piece != null)
             {
                 piece.AddExplosionForce(300f, transform.position, 2f);
+                //son casse
             }
         }
         Destroy(gameObject);

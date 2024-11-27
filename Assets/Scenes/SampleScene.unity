@@ -7354,6 +7354,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4787260062147949336, guid: 89e075249144dd84eb89bbc26cc886c4, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &537894662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7846,6 +7858,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CodeManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &571509966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8224,6 +8248,10 @@ PrefabInstance:
     - target: {fileID: 4097004380892422350, guid: 8fc25c07e2952814b9452ac7389ded74, type: 3}
       propertyPath: m_Name
       value: Holo_Sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097004380892422350, guid: 8fc25c07e2952814b9452ac7389ded74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13884,6 +13912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Holo_Planet_Def_A
       objectReference: {fileID: 0}
+    - target: {fileID: 1985000716219380802, guid: 3befea3a7eb4e6f49a50b215beb8f169, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16386,6 +16418,7 @@ MonoBehaviour:
   - {fileID: 74150993}
   - {fileID: 863605149}
   - {fileID: 933389600}
+  PlanetList: []
   cardsSwiped: 
 --- !u!1 &1562400988
 GameObject:
@@ -16555,6 +16588,10 @@ MonoBehaviour:
   - {fileID: 74150993}
   - {fileID: 863605149}
   - {fileID: 933389600}
+  PlanetList:
+  - {fileID: 2093032151}
+  - {fileID: 1335951068}
+  - {fileID: 1077596270}
   cardsSwiped: 
 --- !u!65 &1585362738
 BoxCollider:
@@ -18229,6 +18266,10 @@ PrefabInstance:
     - target: {fileID: 6310402141428911104, guid: df15c68fbaa56a248a925f5255e3045c, type: 3}
       propertyPath: m_Name
       value: Holo_Planet_Secret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310402141428911104, guid: df15c68fbaa56a248a925f5255e3045c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6690341324468278970, guid: df15c68fbaa56a248a925f5255e3045c, type: 3}
       propertyPath: m_LocalScale.x

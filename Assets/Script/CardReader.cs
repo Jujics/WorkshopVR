@@ -7,6 +7,7 @@ public class CardReader : MonoBehaviour
 {
     public Transform[] CardsSlot;
     public GameObject[] CardInserted;
+    public GameObject[] PlanetList;
     public bool[] cardsSwiped;
     private int i = 0;
 
@@ -21,7 +22,9 @@ public class CardReader : MonoBehaviour
         {
             cardsSwiped[i] = true;
             CardInserted[i].SetActive(true);
+            PlanetList[i].SetActive(true);
             Destroy(other.gameObject);
+            //son
             i++;
             CheckIfAllCardsSwiped();
         }

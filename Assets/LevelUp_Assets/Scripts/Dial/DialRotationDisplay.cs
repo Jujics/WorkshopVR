@@ -13,6 +13,7 @@ namespace LevelUP.Dial
         {
             Debug.Log("Dial changed: " + dialValue);
             dialValue = normalize(dialValue);
+            //sound
             switch (dialValue)
             {
                 case (0):
