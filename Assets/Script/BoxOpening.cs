@@ -16,8 +16,11 @@ public class BoxOpening : MonoBehaviour
     public bool isObject1InZone = false; 
     public bool isObject0InZone = false; 
     public bool isObject2InZone = false;
-    public float target;
+    public float targetBox1EulerX;
+    public float targetBox2EulerX;
     public AudioSource OpenAudio;
+    
+    
     private bool isHandPressingTrigger = false; 
     
     private void OnTriggerEnter(Collider other)
@@ -93,17 +96,19 @@ public class BoxOpening : MonoBehaviour
                 StartCoroutine(WaitForTriggerPress());
             }
         }
-        
+
         if (BoxOpened)
         {
+            BoxOpened = true;
             StartCoroutine(OpenBox());
+            OpenAudio.Play();
             foreach (GameObject go in GameObjectsSpawned)
             {
                 go.SetActive(true);
-                OpenAudio.Play();
             }
             BoxOpened = false;
         }
+        
     }
 
     private IEnumerator WaitForTriggerPress()
@@ -117,7 +122,6 @@ public class BoxOpening : MonoBehaviour
                 if (triggerValue >= 0.9f) 
                 {
                     isHandPressingTrigger = true;
-                    BoxOpened = true;
                     break; 
                 }
 
@@ -164,26 +168,45 @@ public class BoxOpening : MonoBehaviour
 
     private IEnumerator OpenBox()
     {
-        float targetAngle = target; 
-        float speed = 50f;
+        /*BoxDoor.transform.rotation = Quaternion.Euler(targetBox1EulerX, BoxDoor.transform.rotation.y, BoxDoor.transform.rotation.z);
+        BoxDoor2.transform.rotation = Quaternion.Euler(targetBox2EulerX, BoxDoor2.transform.rotation.y, BoxDoor2.transform.rotation.z);
+        
+        yield break;*/
+        
+        // targetBox1Euler => un Vector3 à rentrer direct en tant que valeur publique
+        // targetBox2Euler => un Vector3 à rentrer direct en tant que valeur publique
 
-        while (BoxDoor.transform.localEulerAngles.x > targetAngle || BoxDoor2.transform.localEulerAngles.x > targetAngle)
+        float animationDuration = 1f; //en secondes
+        Vector3 startBox1Euler = BoxDoor.transform.localEulerAngles;
+        Vector3 startBox2Euler = BoxDoor2.transform.localEulerAngles;
+        float startBox1EulerX = startBox1Euler.x;
+        float startBox2EulerX = startBox2Euler.x;
+        
+        while (targetBox1EulerX < -180f)
         {
-            float currentAngley = BoxDoor.transform.localEulerAngles.y;
-            float currentAnglez = BoxDoor2.transform.localEulerAngles.z;
-            float currentAngleBoxDoor = BoxDoor.transform.localEulerAngles.x;
-            float currentAngleBoxDoor2 = BoxDoor2.transform.localEulerAngles.x;
+            targetBox1EulerX += 360f;
+        }
+        targetBox1EulerX %= 360f;
+        
+        while (targetBox2EulerX < -180f)
+        {
+            targetBox2EulerX += 360f;
+        }
+        targetBox2EulerX %= 360f;
+        
+        float progression = 0f;
 
-            if (currentAngleBoxDoor > 180) currentAngleBoxDoor -= 360;
-            if (currentAngleBoxDoor2 > 180) currentAngleBoxDoor2 -= 360;
-
-            float newAngleBoxDoor = Mathf.MoveTowards(currentAngleBoxDoor, targetAngle, speed * Time.deltaTime);
-            float newAngleBoxDoor2 = Mathf.MoveTowards(currentAngleBoxDoor2, targetAngle, speed * Time.deltaTime);
-
-            BoxDoor.transform.localEulerAngles = new Vector3(newAngleBoxDoor, currentAngley, currentAnglez);
-            BoxDoor2.transform.localEulerAngles = new Vector3(newAngleBoxDoor2, currentAngley, currentAnglez);
-
-            yield return null; 
+        while(progression < animationDuration)
+        {
+            BoxDoor.transform.localEulerAngles =
+                new Vector3(Mathf.Lerp(startBox1EulerX, targetBox1EulerX, progression / animationDuration),
+                    startBox1Euler.y, startBox1Euler.z);//Vector3.Lerp(startBox1Euler, targetBox1Euler, progression / animationDuration);
+            BoxDoor2.transform.localEulerAngles = new Vector3(Mathf.Lerp(startBox2EulerX, targetBox2EulerX, progression / animationDuration),
+                startBox2Euler.y, startBox2Euler.z);//Vector3.Lerp(startBox2Euler, targetBox2Euler, progression / animationDuration);
+      
+            yield return null;
+            progression += Time.deltaTime;
+            
         }
     }
 

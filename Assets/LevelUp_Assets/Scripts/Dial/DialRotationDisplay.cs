@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using TMPro;
 
 namespace LevelUP.Dial
@@ -6,10 +7,13 @@ namespace LevelUP.Dial
     public class DialRotationDisplay : MonoBehaviour, IDial
     {
         [SerializeField] TextMeshProUGUI textBox;
-        public GameObject DialManagerHolder;
         public AudioSource DialAudio;
-        DialManager manager => DialManagerHolder.GetComponent<DialManager>();
+        public Action<string> onChanged;
 
+        public string Value
+        {
+            get => textBox.text;
+        }
         public void DialChanged(float dialValue)
         {
             Debug.Log("Dial changed: " + dialValue);
@@ -42,7 +46,7 @@ namespace LevelUP.Dial
                     textBox.text = "8";
                     break;
             }
-            manager.OpenDial();
+            onChanged?.Invoke(textBox.text);
         }
 
         public float normalize(float dialValue)
