@@ -14094,7 +14094,7 @@ MonoBehaviour:
   menuCanvas: {fileID: 104469975}
   playCanvas: {fileID: 1916531210010612222}
   quitCanvas: {fileID: 687148034594222568}
-  sceneName: SampleScene
+  sceneName: LevelDesignFinalPlace
 --- !u!1 &9179202192740486714
 GameObject:
   m_ObjectHideFlags: 0
