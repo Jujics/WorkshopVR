@@ -16,9 +16,9 @@ public class BoxOpening : MonoBehaviour
     public bool isObject1InZone = false; 
     public bool isObject0InZone = false; 
     public bool isObject2InZone = false;
-    public float targetBox1EulerX;
-    public float targetBox2EulerX;
-    public AudioSource OpenAudio;
+    public Vector3 targetBox1EulerX;
+    public Vector3 targetBox2EulerX;
+    //public AudioSource OpenAudio;
     
     
     private bool isHandPressingTrigger = false; 
@@ -101,7 +101,7 @@ public class BoxOpening : MonoBehaviour
         {
             BoxOpened = true;
             StartCoroutine(OpenBox());
-            OpenAudio.Play();
+            //OpenAudio.Play();
             foreach (GameObject go in GameObjectsSpawned)
             {
                 go.SetActive(true);
@@ -181,28 +181,55 @@ public class BoxOpening : MonoBehaviour
         Vector3 startBox2Euler = BoxDoor2.transform.localEulerAngles;
         float startBox1EulerX = startBox1Euler.x;
         float startBox2EulerX = startBox2Euler.x;
+        float startBox1EulerY = startBox1Euler.y;
+        float startBox2EulerY = startBox2Euler.y;
+        float startBox1EulerZ = startBox1Euler.z;
+        float startBox2EulerZ = startBox2Euler.z;
         
-        while (targetBox1EulerX < -180f)
+        while (targetBox1EulerX.x < -180f)
         {
-            targetBox1EulerX += 360f;
+            targetBox1EulerX.x += 360f;
         }
-        targetBox1EulerX %= 360f;
+        targetBox1EulerX.x %= 360f;
         
-        while (targetBox2EulerX < -180f)
+        while (targetBox2EulerX.x < -180f)
         {
-            targetBox2EulerX += 360f;
+            targetBox2EulerX.x += 360f;
         }
-        targetBox2EulerX %= 360f;
+        targetBox2EulerX.x %= 360f;
+        
+        while (targetBox1EulerX.y < -180f)
+        {
+            targetBox1EulerX.y += 360f;
+        }
+        targetBox1EulerX.y %= 360f;
+        
+        while (targetBox2EulerX.y < -180f)
+        {
+            targetBox2EulerX.y += 360f;
+        }
+        targetBox2EulerX.y %= 360f;
+        
+        while (targetBox1EulerX.z < -180f)
+        {
+            targetBox1EulerX.z += 360f;
+        }
+        targetBox1EulerX.z %= 360f;
+        
+        while (targetBox2EulerX.z < -180f)
+        {
+            targetBox2EulerX.z += 360f;
+        }
+        targetBox2EulerX.z %= 360f;
         
         float progression = 0f;
 
         while(progression < animationDuration)
         {
-            BoxDoor.transform.localEulerAngles =
-                new Vector3(Mathf.Lerp(startBox1EulerX, targetBox1EulerX, progression / animationDuration),
-                    startBox1Euler.y, startBox1Euler.z);//Vector3.Lerp(startBox1Euler, targetBox1Euler, progression / animationDuration);
-            BoxDoor2.transform.localEulerAngles = new Vector3(Mathf.Lerp(startBox2EulerX, targetBox2EulerX, progression / animationDuration),
-                startBox2Euler.y, startBox2Euler.z);//Vector3.Lerp(startBox2Euler, targetBox2Euler, progression / animationDuration);
+            BoxDoor.transform.localEulerAngles = new Vector3(Mathf.Lerp(startBox1EulerX, targetBox1EulerX.x, progression / animationDuration),
+                Mathf.Lerp(startBox1EulerY, targetBox1EulerX.y, progression / animationDuration), Mathf.Lerp(startBox1EulerZ, targetBox1EulerX.z, progression / animationDuration));//Vector3.Lerp(startBox1Euler, targetBox1Euler, progression / animationDuration);
+            BoxDoor2.transform.localEulerAngles = new Vector3(Mathf.Lerp(startBox2EulerX, targetBox2EulerX.x, progression / animationDuration),
+                Mathf.Lerp(startBox2EulerY, targetBox2EulerX.y, progression / animationDuration), Mathf.Lerp(startBox2EulerZ, targetBox2EulerX.z, progression / animationDuration));//Vector3.Lerp(startBox2Euler, targetBox2Euler, progression / animationDuration);
       
             yield return null;
             progression += Time.deltaTime;
