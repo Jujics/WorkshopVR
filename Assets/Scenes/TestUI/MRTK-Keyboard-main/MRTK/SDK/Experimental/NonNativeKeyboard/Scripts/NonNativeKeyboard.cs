@@ -78,14 +78,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         #endregion Callbacks
 
         /// <summary>
-        /// The InputField that the keyboard uses to show the currently edited text.
-        /// If you are using the Keyboard prefab you can ignore this field as it will
-        /// be already assigned.
-        /// </summary>
-        //[Experimental]
-        public TMP_InputField InputField = null;
-
-        /// <summary>
         /// Bool for toggling the slider being enabled.
         /// </summary>
         public bool SliderEnabled = true;
@@ -251,26 +243,8 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             //    }
             //}
 
-            // Setting the keyboardType to an undefined TouchScreenKeyboardType,
-            // which prevents the MRTK keyboard from triggering the system keyboard itself.
-            InputField.keyboardType = (TouchScreenKeyboardType)(int.MaxValue);
-
             // Keep keyboard deactivated until needed
             gameObject.SetActive(false);
-        }
-
-
-        /// <summary>
-        /// Set up Dictation, CanvasEX, and automatically select the TextInput object.
-        /// </summary>
-        protected void Start()
-        {
-            //base.Start();
-
-            //dictationSystem = CoreServices.GetInputSystemDataProvider<IMixedRealityDictationSystem>();
-
-            // Delegate Subscription
-            InputField.onValueChanged.AddListener(DoTextUpdated);
         }
 
         //protected override void RegisterHandlers()
@@ -303,15 +277,12 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             }
         }
 
-        private void UpdateCaretPosition(int newPos) => InputField.caretPosition = newPos;
-
         /// <summary>
         /// Called whenever the keyboard is disabled or deactivated.
         /// </summary>
         protected void OnDisable()
         {            
             m_LastKeyboardLayout = LayoutType.Alpha;
-            Clear();
         }
 
 
@@ -385,23 +356,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             ActivateSpecificKeyboard(LayoutType.Alpha);
 
             OnPlacement(this, EventArgs.Empty);
-
-            // todo: if the app is built for xaml, our prefab and the system keyboard may be displayed.
-            InputField.ActivateInputField();
-
-            //SetMicrophoneDefault();
-        }
-
-
-        /// <summary>
-        /// Presents the default keyboard to the camera, with start text.
-        /// </summary>
-        /// <param name="startText">The initial text to show in the keyboard's input field.</param>
-        public void PresentKeyboard(string startText)
-        {
-            PresentKeyboard();
-            Clear();
-            InputField.text = startText;
         }
 
         /// <summary>
@@ -421,7 +375,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// <param name="keyboardType">Specify the keyboard type.</param>
         public void PresentKeyboard(string startText, LayoutType keyboardType)
         {
-            PresentKeyboard(startText);
             ActivateSpecificKeyboard(keyboardType);
         }
 
@@ -599,13 +552,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             {
                 Shift(false);
             }
-
-            m_CaretPosition = InputField.caretPosition;
-
-            InputField.text = InputField.text.Insert(m_CaretPosition, value);
-            m_CaretPosition += value.Length;
-
-            UpdateCaretPosition(m_CaretPosition);
         }
 
         /// <summary>
@@ -647,12 +593,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
                     break;
                 }
 
-                case KeyboardKeyFunc.Function.Next:
-                {
-                    MoveCaretRight();
-                    break;
-                }
-
                 case KeyboardKeyFunc.Function.Close:
                 {
                     Close();
@@ -686,18 +626,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
                     break;
                 }
 
-                case KeyboardKeyFunc.Function.Space:
-                {
-                    Space();
-                    break;
-                }
-
-                case KeyboardKeyFunc.Function.Backspace:
-                {
-                    Backspace();
-                    break;
-                }
-
                 case KeyboardKeyFunc.Function.UNDEFINED:
                 {
                     Debug.LogErrorFormat("The {0} key on this keyboard hasn't been assigned a function.", functionKey.name);
@@ -712,38 +640,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// <summary>
         /// Delete the character before the caret.
         /// </summary>
-        public void Backspace()
-        {
-            // check if text is selected
-            if (InputField.selectionFocusPosition != InputField.caretPosition || InputField.selectionAnchorPosition != InputField.caretPosition)
-            {
-                if (InputField.selectionAnchorPosition > InputField.selectionFocusPosition) // right to left
-                {
-                    InputField.text = InputField.text.Substring(0, InputField.selectionFocusPosition) + InputField.text.Substring(InputField.selectionAnchorPosition);
-                    InputField.caretPosition = InputField.selectionFocusPosition;
-                }
-                else // left to right
-                {
-                    InputField.text = InputField.text.Substring(0, InputField.selectionAnchorPosition) + InputField.text.Substring(InputField.selectionFocusPosition);
-                    InputField.caretPosition = InputField.selectionAnchorPosition;
-                }
-
-                m_CaretPosition = InputField.caretPosition;
-                InputField.selectionAnchorPosition = m_CaretPosition;
-                InputField.selectionFocusPosition = m_CaretPosition;
-            }
-            else
-            {
-                m_CaretPosition = InputField.caretPosition;
-
-                if (m_CaretPosition > 0)
-                {
-                    --m_CaretPosition;
-                    InputField.text = InputField.text.Remove(m_CaretPosition, 1);
-                    UpdateCaretPosition(m_CaretPosition);
-                }
-            }
-        }
 
         /// <summary>
         /// Send the "previous" event.
@@ -777,13 +673,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             else
             {
                 string enterString = "\n";
-
-                m_CaretPosition = InputField.caretPosition;
-
-                InputField.text = InputField.text.Insert(m_CaretPosition, enterString);
-                m_CaretPosition += enterString.Length;
-
-                UpdateCaretPosition(m_CaretPosition);
             }
 
         }
@@ -814,29 +703,11 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         }
 
         /// <summary>
-        /// Insert a space character.
-        /// </summary>
-        public void Space()
-        {
-            m_CaretPosition = InputField.caretPosition;
-            InputField.text = InputField.text.Insert(m_CaretPosition++, " ");
-
-            UpdateCaretPosition(m_CaretPosition);
-        }
-
-        /// <summary>
         /// Insert a tab character.
         /// </summary>
         public void Tab()
         {
             string tabString = "\t";
-
-            m_CaretPosition = InputField.caretPosition;
-
-            InputField.text = InputField.text.Insert(m_CaretPosition, tabString);
-            m_CaretPosition += tabString.Length;
-
-            UpdateCaretPosition(m_CaretPosition);
         }
 
         /// <summary>
@@ -844,29 +715,12 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// </summary>
         public void MoveCaretLeft()
         {
-            m_CaretPosition = InputField.caretPosition;
 
             if (m_CaretPosition > 0)
             {
                 --m_CaretPosition;
-                UpdateCaretPosition(m_CaretPosition);
             }
         }
-
-        /// <summary>
-        /// Move caret to the right.
-        /// </summary>
-        public void MoveCaretRight()
-        {
-            m_CaretPosition = InputField.caretPosition;
-
-            if (m_CaretPosition < InputField.text.Length)
-            {
-                ++m_CaretPosition;
-                UpdateCaretPosition(m_CaretPosition);
-            }
-        }
-
         /// <summary>
         /// Close the keyboard.
         /// (Clears all event subscriptions.)
@@ -885,16 +739,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// <summary>
         /// Clear the text input field.
         /// </summary>
-        public void Clear()
-        {
-            ResetKeyboardState();
-            if (InputField.caretPosition != 0)
-            {
-                InputField.MoveTextStart(false);
-            }
-            InputField.text = "";
-            m_CaretPosition = InputField.caretPosition;
-        }
 
         #endregion
 
