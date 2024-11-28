@@ -658,6 +658,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6432071518314850979, guid: 4057024038609eb46af61297147e2e5a, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432071518314850979, guid: 4057024038609eb46af61297147e2e5a, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7540737903881186309, guid: 4057024038609eb46af61297147e2e5a, type: 3}
       propertyPath: m_Name
       value: PrefabDeLaMort
