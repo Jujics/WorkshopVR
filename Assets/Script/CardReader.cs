@@ -37,7 +37,7 @@ public class CardReader : MonoBehaviour
 
         if (allSwiped)
         {
-            Debug.Log("All cards swiped!");
+            
         }
     }
 }

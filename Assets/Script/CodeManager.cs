@@ -11,10 +11,10 @@ public class CodeManager : MonoBehaviour
     public TextMeshProUGUI[] CodeText;
     public int currentLoc = 0;
     public bool HasEnteredCode3 = false;
-    public BoxOpening Box;
     public AudioSource InteractDigiAudio;
     public AudioSource CodeFauxAudio;
     public AudioSource CodeBonAudio;
+    public GameObject Card;
     private bool HasEnteredCode1 = false;
     private bool HasEnteredCode2 = false;
     
@@ -47,7 +47,7 @@ public class CodeManager : MonoBehaviour
         {
             if (Fcode == "0,0,0,0")
             {
-                Box.BoxOpened = true;
+                Card.SetActive(true);
                 //setactive(canvas) = False
                 HasEnteredCode3 = true;
                 CodeBonAudio.Play();
