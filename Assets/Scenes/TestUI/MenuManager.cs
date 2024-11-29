@@ -48,7 +48,10 @@ public class MenuManager : MonoBehaviour
         quitCanvas.SetActive(true);
         quitText.color = Color.red;
         yield return new WaitForSeconds(2);
-        Application.Quit();
+#if DEBUG
         UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

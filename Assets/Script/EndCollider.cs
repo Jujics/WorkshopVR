@@ -1,16 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TropheeManager : MonoBehaviour
+public class EndCollider : MonoBehaviour
 {
-    public GameObject UiCode;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Planet")
+        if (other.gameObject.tag == "Player")
         {
-            UiCode.SetActive(true);
+            SceneManager.LoadScene(0);
         }
     }
 }

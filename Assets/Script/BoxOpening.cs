@@ -99,7 +99,6 @@ public class BoxOpening : MonoBehaviour
 
         if (BoxOpened)
         {
-            BoxOpened = true;
             StartCoroutine(OpenBox());
             //OpenAudio.Play();
             foreach (GameObject go in GameObjectsSpawned)
@@ -122,6 +121,7 @@ public class BoxOpening : MonoBehaviour
                 if (triggerValue >= 0.9f) 
                 {
                     isHandPressingTrigger = true;
+                    BoxOpened = true;
                     break; 
                 }
 

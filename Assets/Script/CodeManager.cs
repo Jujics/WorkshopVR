@@ -45,19 +45,20 @@ public class CodeManager : MonoBehaviour
         
         if (HasEnteredCode2 && HasEnteredCode1)
         {
-            if (Fcode == "0,0,0,0")
+            if (Fcode == "2,1,8,1")
             {
                 Card.SetActive(true);
                 //setactive(canvas) = False
                 HasEnteredCode3 = true;
                 CodeBonAudio.Play();
+                Card.SetActive(true);
                 ResetCode();
             }
         }
         
         if (HasEnteredCode1)
         {
-            if (Fcode == "0,0,0,0")
+            if (Fcode == "2,1,5,7")
             {
                 //Setactive(image1) = false
                 //Setactive(image2) = true
@@ -69,7 +70,7 @@ public class CodeManager : MonoBehaviour
         
         if (!HasEnteredCode1)
         {
-            if (Fcode == "0,0,0,0")
+            if (Fcode == "2,1,5,4")
             {
                 //Setactive(image0) = false
                 //Setactive(image1) = true
