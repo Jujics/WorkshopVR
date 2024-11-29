@@ -233,7 +233,6 @@ public class BoxOpening : MonoBehaviour
       
             yield return null;
             progression += Time.deltaTime;
-            
         }
     }
 

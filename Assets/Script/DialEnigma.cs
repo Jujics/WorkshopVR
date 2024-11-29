@@ -28,8 +28,8 @@ public class DialEnigma : Enigma
             {
                 return;
             }
-            Completed = true;
         }
+        Completed = true;
     }
     
     public override IEnumerator WaitForEnigmaCompletion()

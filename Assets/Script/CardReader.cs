@@ -25,9 +25,9 @@ public class CardReader : MonoBehaviour
             cardsSwiped[i] = true;
             CardInserted[i].SetActive(true);
             PlanetList[i].SetActive(true);
-            i++;
             InteractClefUSB.Play();
             CheckIfAllCardsSwiped();
+            i++;
         }
     }
 

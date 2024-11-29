@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medaillon_P1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e1a38df7e344034baa4408a7919c2b5, type: 3}
+      propertyPath: m_TagString
+      value: Medaille1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
