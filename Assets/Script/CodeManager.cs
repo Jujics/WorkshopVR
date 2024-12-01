@@ -58,7 +58,7 @@ public class CodeManager : MonoBehaviour
         
         if (HasEnteredCode1)
         {
-            if (Fcode == "2,1,5,7")
+            if (Fcode == "2,1,4,2")
             {
                 //Setactive(image1) = false
                 //Setactive(image2) = true
